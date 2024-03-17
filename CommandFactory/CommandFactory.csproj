@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B1712A64-6E0D-44F9-A86B-C11C566DC1A9}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>CommandRunner</RootNamespace>
-    <AssemblyName>CommandRunner</AssemblyName>
+    <ProjectGuid>{8ED70149-24A3-446F-AE03-D561BB6A736B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CommandFactory</RootNamespace>
+    <AssemblyName>CommandFactory</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="geometry4Sharp">
+      <HintPath>..\GBCore\G4DLL\geometry4Sharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,17 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Commands\CommandFactory.cs" />
+    <Compile Include="Commands\CreatePLateCommand.cs" />
+    <Compile Include="Commands\CreateTrussCommand.cs" />
+    <Compile Include="Commands\HelloWorldCommand.cs" />
+    <Compile Include="Commands\IGBCommand.cs" />
+    <Compile Include="Commands\ReadKeyCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CommandFactory\CommandFactory.csproj">
-      <Project>{8ed70149-24a3-446f-ae03-d561bb6a736b}</Project>
-      <Name>CommandFactory</Name>
+    <ProjectReference Include="..\GBCore\GBCore.csproj">
+      <Project>{99f67f83-dc98-4b71-a6c1-5d17f79591ae}</Project>
+      <Name>GBCore</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
